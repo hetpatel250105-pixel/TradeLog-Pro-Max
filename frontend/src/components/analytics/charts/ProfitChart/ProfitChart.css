@@ -1,0 +1,41 @@
+.profit-chart {
+
+    width: 100%;
+
+    height: 350px;
+
+    padding: 10px;
+
+}
+
+.profit-chart .recharts-default-tooltip {
+
+    background: #161b29 !important;
+
+    border: 1px solid #2c3650 !important;
+
+    border-radius: 12px !important;
+
+    color: white !important;
+
+}
+
+.profit-chart .recharts-legend-item-text {
+
+    color: #e2e8f0 !important;
+
+}
+
+.profit-chart .recharts-pie-label-text {
+
+    fill: white !important;
+
+    font-size: 13px;
+
+}
+
+.profit-chart .recharts-text {
+
+    fill: #cbd5e1;
+
+}

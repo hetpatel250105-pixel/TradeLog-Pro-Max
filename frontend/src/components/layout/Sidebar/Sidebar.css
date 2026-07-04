@@ -1,0 +1,203 @@
+.sidebar{
+
+    width:280px;
+
+    height:100vh;
+
+    background:var(--sidebar-background);
+
+    border-right:1px solid var(--border-color);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:30px 20px;
+
+    position:sticky;
+
+    top:0;
+
+    transition:.35s ease;
+
+    box-shadow:var(--shadow);
+
+}
+
+.sidebar-top{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:35px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding-bottom:20px;
+
+    border-bottom:1px solid var(--border-color);
+
+}
+
+.logo img{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:12px;
+
+}
+
+.logo h2{
+
+    color:var(--text-color);
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.sidebar-nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.sidebar-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 18px;
+
+    border-radius:14px;
+
+    color:var(--secondary-text);
+
+    text-decoration:none;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    transition:.25s;
+
+}
+
+.sidebar-link svg{
+
+    font-size:22px;
+
+}
+
+.sidebar-link:hover{
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary-color);
+
+    transform:translateX(6px);
+
+}
+
+.sidebar-link.active{
+
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+
+    color:white;
+
+    box-shadow:0 12px 24px rgba(99,102,241,.35);
+
+}
+
+.sidebar-bottom{
+
+    border-top:1px solid var(--border-color);
+
+    padding-top:25px;
+
+}
+
+.logout-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.logout-btn:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(239,68,68,.35);
+
+}
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:90px;
+
+        padding:25px 12px;
+
+    }
+
+    .logo h2{
+
+        display:none;
+
+    }
+
+    .sidebar-link span{
+
+        display:none;
+
+    }
+
+    .sidebar-link{
+
+        justify-content:center;
+
+    }
+
+}

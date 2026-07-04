@@ -1,0 +1,253 @@
+.trade-table-container{
+
+    background:var(--card-background);
+
+    border:1px solid var(--border-color);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.trade-table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:22px 28px;
+
+    border-bottom:1px solid var(--border-color);
+
+}
+
+.trade-table-header h2{
+
+    color:var(--text-color);
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.trade-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.trade-table thead{
+
+    background:rgba(99,102,241,.08);
+
+}
+
+.trade-table th{
+
+    padding:18px;
+
+    text-align:left;
+
+    color:var(--secondary-text);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+    border-bottom:1px solid var(--border-color);
+
+    position:sticky;
+
+    top:0;
+
+    background:var(--card-background);
+
+    z-index:10;
+
+}
+
+.trade-table td{
+
+    padding:18px;
+
+    color:var(--text-color);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    transition:.25s;
+
+}
+
+.trade-table tbody tr{
+
+    transition:.25s;
+
+}
+
+.trade-table tbody tr:hover{
+
+    background:rgba(99,102,241,.08);
+
+}
+
+.trade-table tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+.result{
+
+    display:inline-block;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.result.win{
+
+    background:rgba(34,197,94,.15);
+
+    color:#22c55e;
+
+}
+
+.result.loss{
+
+    background:rgba(239,68,68,.15);
+
+    color:#ef4444;
+
+}
+
+.result.breakeven{
+
+    background:rgba(245,158,11,.15);
+
+    color:#f59e0b;
+
+}
+
+.profit-positive{
+
+    color:#22c55e;
+
+    font-weight:700;
+
+}
+
+.profit-negative{
+
+    color:#ef4444;
+
+    font-weight:700;
+
+}
+
+.trade-action{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.edit-btn{
+
+    border:none;
+
+    background:#3b82f6;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.edit-btn:hover{
+
+    background:#2563eb;
+
+    transform:translateY(-2px);
+
+}
+
+.delete-btn{
+
+    border:none;
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.delete-btn:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+
+}
+
+.empty-state{
+
+    padding:50px;
+
+    text-align:center;
+
+    color:var(--secondary-text);
+
+    font-size:18px;
+
+}
+
+@media(max-width:992px){
+
+    .trade-table-container{
+
+        overflow-x:auto;
+
+    }
+
+    .trade-table{
+
+        min-width:1100px;
+
+    }
+
+}

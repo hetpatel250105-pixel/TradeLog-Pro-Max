@@ -1,0 +1,47 @@
+.monthly-chart {
+
+    width: 100%;
+
+    height: 350px;
+
+    padding: 10px;
+
+}
+
+.monthly-chart .recharts-cartesian-grid line {
+
+    stroke: rgba(255,255,255,0.08);
+
+}
+
+.monthly-chart .recharts-cartesian-axis-line {
+
+    stroke: rgba(255,255,255,0.15);
+
+}
+
+.monthly-chart .recharts-cartesian-axis-tick-value {
+
+    fill: #cbd5e1;
+
+    font-size: 13px;
+
+}
+
+.monthly-chart .recharts-default-tooltip {
+
+    background: #161b29 !important;
+
+    border: 1px solid #2c3650 !important;
+
+    border-radius: 12px !important;
+
+    color: white !important;
+
+}
+
+.monthly-chart .recharts-text {
+
+    fill: #cbd5e1;
+
+}
