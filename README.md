@@ -43,25 +43,45 @@ Along the way, I also wanted to improve my backend and frontend development skil
 
 ```
 TradeLog-Pro-Max
-│
-├── backend
-│   ├── app
-│   ├── database
-│   ├── models
-│   ├── routers
-│   ├── schemas
-│   └── main.py
-│
-├── frontend
-│   ├── src
-│   ├── components
-│   ├── pages
-│   ├── context
-│   ├── services
-│   └── App.jsx
-│
-└── README.md
+
+> backend
+  > app
+  > database
+  > models
+  > routers
+  > schemas
+  > main.py
+
+> frontend
+  > src
+  > components
+  > pages
+  > context
+  > services
+  > App.jsx
+
+> README.md
 ```
+
+---
+
+# 📸 Screenshots
+
+### Login Page
+
+<img width="1912" height="902" alt="image" src="https://github.com/user-attachments/assets/67692afc-2de5-43bd-b19f-835ba247151e" />
+
+---
+
+### Dashboard
+
+<img width="1918" height="913" alt="image" src="https://github.com/user-attachments/assets/d67961d0-ffd8-4e50-b582-c068fd7981d3" />
+
+<img width="1918" height="898" alt="image" src="https://github.com/user-attachments/assets/e94d8698-c9e4-4db7-ada1-90de18c55a7b" />
+
+<img width="1918" height="912" alt="image" src="https://github.com/user-attachments/assets/8e8ef70f-ab66-42f5-9907-612e5f99f7ac" />
+
+<img width="1918" height="906" alt="image" src="https://github.com/user-attachments/assets/e06f093d-6e7b-4b33-8dc7-17b98e2fd7d1" />
 
 ---
 
@@ -70,6 +90,8 @@ TradeLog-Pro-Max
 I built TradeLog Pro Max to combine my interest in trading with my goal of becoming a full-stack Python developer.
 I wanted to move beyond tutorial projects and build a real application that solves a practical problem.
 The project helped me gain experience with React, FastAPI, PostgreSQL, REST APIs, and data visualization while creating a tool that I can continue to use and improve.
+
+*A PLATFORM FOR TRADERS, BUILD BY A TRADER.*
 
 ## Things I learned
 
