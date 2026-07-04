@@ -77,9 +77,15 @@ TradeLog-Pro-Max
 
 <img width="1918" height="913" alt="image" src="https://github.com/user-attachments/assets/d67961d0-ffd8-4e50-b582-c068fd7981d3" />
 
+---
+
 <img width="1918" height="898" alt="image" src="https://github.com/user-attachments/assets/e94d8698-c9e4-4db7-ada1-90de18c55a7b" />
 
+---
+
 <img width="1918" height="912" alt="image" src="https://github.com/user-attachments/assets/8e8ef70f-ab66-42f5-9907-612e5f99f7ac" />
+
+---
 
 <img width="1918" height="906" alt="image" src="https://github.com/user-attachments/assets/e06f093d-6e7b-4b33-8dc7-17b98e2fd7d1" />
 
