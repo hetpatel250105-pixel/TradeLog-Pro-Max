@@ -67,8 +67,6 @@ TradeLog-Pro-Max
 
 ---
 
-#Screenshots
-
 ### Login Page
 
 <img width="1912" height="902" alt="image" src="https://github.com/user-attachments/assets/67692afc-2de5-43bd-b19f-835ba247151e" />
