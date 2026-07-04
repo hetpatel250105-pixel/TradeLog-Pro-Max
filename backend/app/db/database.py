@@ -8,12 +8,9 @@ from pathlib import Path
 env_path = Path(__file__).resolve().parents[2] / ".env"
 load_dotenv(dotenv_path=env_path)
 
-print("ENV PATH:", env_path)
 print("DATABASE_URL:", os.getenv("DATABASE_URL"))
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-
-print("DATABASE_URL =", DATABASE_URL)
 
 engine = create_engine(DATABASE_URL)
 
