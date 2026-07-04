@@ -43,12 +43,24 @@ Along the way, I also wanted to improve my backend and frontend development skil
 
 ```
 TradeLog-Pro-Max
-
- > backend
-
- > frontend
-
- > README.md
+│
+├── backend
+│   ├── app
+│   ├── database
+│   ├── models
+│   ├── routers
+│   ├── schemas
+│   └── main.py
+│
+├── frontend
+│   ├── src
+│   ├── components
+│   ├── pages
+│   ├── context
+│   ├── services
+│   └── App.jsx
+│
+└── README.md
 ```
 
 ---
