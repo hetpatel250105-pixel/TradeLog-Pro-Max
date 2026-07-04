@@ -16,7 +16,11 @@ from app.security.hash import verify_password
 
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.db.database import Base, engine
+
 app = FastAPI()
+
+Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
