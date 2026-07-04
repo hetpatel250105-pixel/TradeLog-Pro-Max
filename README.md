@@ -67,7 +67,7 @@ TradeLog-Pro-Max
 
 ---
 
-# 📸 Screenshots
+#Screenshots
 
 ### Login Page
 
