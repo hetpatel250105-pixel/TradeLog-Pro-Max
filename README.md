@@ -3,6 +3,8 @@
 TradeLog Pro Max is a full-stack trading journal that I built to help traders record and analyze their trades.
 The idea behind this project was to create a simple platform where a trader can log trades, track performance, and understand their strengths and weaknesses through backtesting charts and statistics.
 Along the way, I also wanted to improve my backend and frontend development skills by building a real-world application instead of another basic CRUD project.
+
+*A PLATFORM FOR TRADERS, BUILD BY A TRADER.*
 ---
 
 ## What you can do
@@ -90,8 +92,6 @@ TradeLog-Pro-Max
 I built TradeLog Pro Max to combine my interest in trading with my goal of becoming a full-stack Python developer.
 I wanted to move beyond tutorial projects and build a real application that solves a practical problem.
 The project helped me gain experience with React, FastAPI, PostgreSQL, REST APIs, and data visualization while creating a tool that I can continue to use and improve.
-
-*A PLATFORM FOR TRADERS, BUILD BY A TRADER.*
 
 ## Things I learned
 
