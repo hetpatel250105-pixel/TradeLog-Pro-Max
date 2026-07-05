@@ -4,7 +4,7 @@ import {
     getTrades,
     deleteTrade,
     updateTrade
-} from "../services/tradeService";
+} from "../services/api";
 
 const TradeContext = createContext();
 
@@ -16,28 +16,37 @@ export function TradeProvider({ children }) {
 
         try {
 
-            const userId = localStorage.getItem("user_id");
+            const token = localStorage.getItem("access_token");
 
-            console.log("User ID:", userId);
+            if (!token) {
 
-            if (!userId) {
                 console.log("No user logged in.");
+
                 setTrades([]);
+
                 return;
+
             }
 
-            const response = await getTrades(userId);
+            const response = await getTrades();
 
-            console.log("API Response:", response);
-            console.log("Is Array:", Array.isArray(response));
+            console.log("API Response:", response.data);
 
-            setTrades(response);
+            setTrades(response.data);
 
-            console.log("After setTrades:", response);
+        }
 
-        } catch (error) {
+        catch (error) {
 
             console.error("Load Trades Error:", error);
+
+            if (error.response?.status === 401) {
+
+                localStorage.clear();
+
+                window.location.href = "/";
+
+            }
 
         }
 
@@ -51,7 +60,9 @@ export function TradeProvider({ children }) {
 
             await loadTrades();
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             console.error(error);
 
@@ -67,7 +78,9 @@ export function TradeProvider({ children }) {
 
             await loadTrades();
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             console.error(error);
 
@@ -81,47 +94,82 @@ export function TradeProvider({ children }) {
 
     }, []);
 
+    // ===============================
     // Dashboard Statistics
+    // ===============================
 
     const totalTrades = trades.length;
 
     const totalProfit = trades.reduce(
+
         (sum, trade) => sum + Number(trade.profit),
+
         0
+
     );
 
     const winningTrades = trades.filter(
+
         (trade) => trade.result === "Win"
+
     ).length;
 
     const winRate =
+
         totalTrades === 0
+
             ? 0
-            : ((winningTrades / totalTrades) * 100).toFixed(1);
+
+            : (
+
+                (winningTrades / totalTrades) * 100
+
+            ).toFixed(1);
 
     const averageRR =
+
         totalTrades === 0
+
             ? 0
+
             : (
+
                 trades.reduce(
-                    (sum, trade) => sum + Number(trade.risk_reward),
+
+                    (sum, trade) =>
+
+                        sum + Number(trade.risk_reward),
+
                     0
+
                 ) / totalTrades
+
             ).toFixed(2);
 
     return (
 
         <TradeContext.Provider
+
             value={{
+
                 trades,
+
                 loadTrades,
+
                 removeTrade,
+
                 editTrade,
+
                 totalTrades,
+
                 totalProfit,
+
                 winRate,
+
                 averageRR
+
             }}
+
         >
 
             {children}

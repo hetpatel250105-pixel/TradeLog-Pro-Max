@@ -6,7 +6,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
 
-    const userId = localStorage.getItem("user_id");
+    const token = localStorage.getItem("access_token");
 
     return (
 
@@ -15,69 +15,43 @@ function App() {
             {/* Login */}
 
             <Route
-
                 path="/"
-
                 element={
-
-                    userId
-
+                    token
                         ? <Navigate to="/dashboard" />
-
                         : <Login />
-
                 }
-
             />
 
             {/* Register */}
 
             <Route
-
                 path="/register"
-
                 element={
-
-                    userId
-
+                    token
                         ? <Navigate to="/dashboard" />
-
                         : <Register />
-
                 }
-
             />
 
             {/* Dashboard */}
 
             <Route
-
                 path="/dashboard"
-
                 element={
-
-                    userId
-
+                    token
                         ? <Dashboard />
-
                         : <Navigate to="/" />
-
                 }
-
             />
 
-            {/* Catch all invalid routes */}
+            {/* Catch all */}
 
             <Route
-
                 path="*"
-
                 element={
-
-                    <Navigate to={userId ? "/dashboard" : "/"} />
-
+                    <Navigate to={token ? "/dashboard" : "/"} />
                 }
-
             />
 
         </Routes>

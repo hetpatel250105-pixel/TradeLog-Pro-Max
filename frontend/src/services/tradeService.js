@@ -1,15 +1,17 @@
-import axios from "axios";
-
-const API_URL = "http://127.0.0.1:8000";
+import api from "./api";
 
 // ======================
 // Create Trade
 // ======================
+
 export const createTrade = async (trade) => {
 
-    const response = await axios.post(
-        `${API_URL}/trade`,
+    const response = await api.post(
+
+        "/trade",
+
         trade
+
     );
 
     return response.data;
@@ -19,10 +21,13 @@ export const createTrade = async (trade) => {
 // ======================
 // Get All Trades
 // ======================
-export const getTrades = async (userId) => {
 
-    const response = await axios.get(
-        `${API_URL}/trades/${userId}`
+export const getTrades = async () => {
+
+    const response = await api.get(
+
+        "/trades"
+
     );
 
     return response.data;
@@ -32,10 +37,13 @@ export const getTrades = async (userId) => {
 // ======================
 // Get Single Trade
 // ======================
+
 export const getTrade = async (id) => {
 
-    const response = await axios.get(
-        `${API_URL}/trade/${id}`
+    const response = await api.get(
+
+        `/trade/${id}`
+
     );
 
     return response.data;
@@ -45,11 +53,21 @@ export const getTrade = async (id) => {
 // ======================
 // Update Trade
 // ======================
-export const updateTrade = async (id, trade) => {
 
-    const response = await axios.put(
-        `${API_URL}/trade/${id}`,
+export const updateTrade = async (
+
+    id,
+
+    trade
+
+) => {
+
+    const response = await api.put(
+
+        `/trade/${id}`,
+
         trade
+
     );
 
     return response.data;
@@ -59,10 +77,13 @@ export const updateTrade = async (id, trade) => {
 // ======================
 // Delete Trade
 // ======================
+
 export const deleteTrade = async (id) => {
 
-    const response = await axios.delete(
-        `${API_URL}/trade/${id}`
+    const response = await api.delete(
+
+        `/trade/${id}`
+
     );
 
     return response.data;

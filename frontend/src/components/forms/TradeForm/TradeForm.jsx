@@ -11,29 +11,17 @@ function TradeForm({ editingTrade = null, onClose }) {
     const emptyTrade = {
 
         pair: "",
-
         trade_type: "Buy",
-
         entry: "",
-
         exit: "",
-
         stop_loss: "",
-
         take_profit: "",
-
         lot_size: "",
-
         risk_reward: "",
-
         profit: "",
-
         result: "Win",
-
         strategy: "",
-
         notes: "",
-
         trade_date: new Date().toISOString().split("T")[0]
 
     };
@@ -90,8 +78,6 @@ function TradeForm({ editingTrade = null, onClose }) {
 
         try {
 
-            const user_id = Number(localStorage.getItem("user_id"));
-
             const tradeData = {
 
                 pair: trade.pair,
@@ -118,9 +104,7 @@ function TradeForm({ editingTrade = null, onClose }) {
 
                 notes: trade.notes,
 
-                trade_date: trade.trade_date,
-
-                user_id: user_id
+                trade_date: trade.trade_date
 
             };
 
@@ -159,230 +143,230 @@ function TradeForm({ editingTrade = null, onClose }) {
     }
 
     return (
-    
-    <div className="trade-form-container">
 
-        <h2>
+        <div className="trade-form-container">
 
-            {editingTrade ? "Edit Trade" : "Add New Trade"}
+            <h2>
 
-        </h2>
+                {editingTrade ? "Edit Trade" : "Add New Trade"}
 
-        <form
-            className="trade-form"
-            onSubmit={handleSubmit}
-        >
+            </h2>
 
-            <div className="form-group">
-
-                <label>Trading Pair</label>
-
-                <input
-                    type="text"
-                    name="pair"
-                    placeholder="XAUUSD"
-                    value={trade.pair}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Trade Type</label>
-
-                <select
-                    name="trade_type"
-                    value={trade.trade_type}
-                    onChange={handleChange}
-                >
-
-                    <option value="Buy">Buy</option>
-                    <option value="Sell">Sell</option>
-
-                </select>
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Entry Price</label>
-
-                <input
-                    type="number"
-                    step="0.01"
-                    name="entry"
-                    value={trade.entry}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Exit Price</label>
-
-                <input
-                    type="number"
-                    step="0.01"
-                    name="exit"
-                    value={trade.exit}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Stop Loss</label>
-
-                <input
-                    type="number"
-                    step="0.01"
-                    name="stop_loss"
-                    value={trade.stop_loss}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Take Profit</label>
-
-                <input
-                    type="number"
-                    step="0.01"
-                    name="take_profit"
-                    value={trade.take_profit}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Lot Size</label>
-
-                <input
-                    type="number"
-                    step="0.01"
-                    name="lot_size"
-                    value={trade.lot_size}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Risk Reward</label>
-
-                <input
-                    type="number"
-                    step="0.1"
-                    name="risk_reward"
-                    value={trade.risk_reward}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Profit ($)</label>
-
-                <input
-                    type="number"
-                    step="0.01"
-                    name="profit"
-                    value={trade.profit}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Result</label>
-
-                <select
-                    name="result"
-                    value={trade.result}
-                    onChange={handleChange}
-                >
-
-                    <option value="Win">Win</option>
-                    <option value="Loss">Loss</option>
-                    <option value="Breakeven">Breakeven</option>
-
-                </select>
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Strategy</label>
-
-                <input
-                    type="text"
-                    name="strategy"
-                    value={trade.strategy}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group">
-
-                <label>Trade Date</label>
-
-                <input
-                    type="date"
-                    name="trade_date"
-                    value={trade.trade_date}
-                    onChange={handleChange}
-                    required
-                />
-
-            </div>
-
-            <div className="form-group full-width">
-
-                <label>Trade Notes</label>
-
-                <textarea
-                    rows="5"
-                    name="notes"
-                    value={trade.notes}
-                    onChange={handleChange}
-                />
-
-            </div>
-
-            <button
-                type="submit"
-                className="save-btn"
+            <form
+                className="trade-form"
+                onSubmit={handleSubmit}
             >
 
-                {editingTrade ? "Update Trade" : "Save Trade"}
+                <div className="form-group">
 
-            </button>
+                    <label>Trading Pair</label>
 
-        </form>
+                    <input
+                        type="text"
+                        name="pair"
+                        placeholder="XAUUSD"
+                        value={trade.pair}
+                        onChange={handleChange}
+                        required
+                    />
 
-    </div>
+                </div>
 
-);
+                <div className="form-group">
+
+                    <label>Trade Type</label>
+
+                    <select
+                        name="trade_type"
+                        value={trade.trade_type}
+                        onChange={handleChange}
+                    >
+
+                        <option value="Buy">Buy</option>
+                        <option value="Sell">Sell</option>
+
+                    </select>
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Entry Price</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="entry"
+                        value={trade.entry}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Exit Price</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="exit"
+                        value={trade.exit}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Stop Loss</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="stop_loss"
+                        value={trade.stop_loss}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Take Profit</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="take_profit"
+                        value={trade.take_profit}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Lot Size</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="lot_size"
+                        value={trade.lot_size}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Risk Reward</label>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        name="risk_reward"
+                        value={trade.risk_reward}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Profit ($)</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="profit"
+                        value={trade.profit}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Result</label>
+
+                    <select
+                        name="result"
+                        value={trade.result}
+                        onChange={handleChange}
+                    >
+
+                        <option value="Win">Win</option>
+                        <option value="Loss">Loss</option>
+                        <option value="Breakeven">Breakeven</option>
+
+                    </select>
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Strategy</label>
+
+                    <input
+                        type="text"
+                        name="strategy"
+                        value={trade.strategy}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group">
+
+                    <label>Trade Date</label>
+
+                    <input
+                        type="date"
+                        name="trade_date"
+                        value={trade.trade_date}
+                        onChange={handleChange}
+                        required
+                    />
+
+                </div>
+
+                <div className="form-group full-width">
+
+                    <label>Trade Notes</label>
+
+                    <textarea
+                        rows="5"
+                        name="notes"
+                        value={trade.notes}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <button
+                    type="submit"
+                    className="save-btn"
+                >
+
+                    {editingTrade ? "Update Trade" : "Save Trade"}
+
+                </button>
+
+            </form>
+
+        </div>
+
+    );
 
 }
 

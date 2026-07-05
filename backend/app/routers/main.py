@@ -29,29 +29,46 @@ app.include_router(trade.router)
 
 @app.get("/")
 def home():
+
     return {
+
         "message": "Welcome to TradeLog Pro Max API"
+
     }
 
 
 @app.get("/about")
 def about():
+
     return {
+
         "project": "TradeLog Pro Max",
+
         "version": "2.0"
+
     }
 
 
 @app.get("/developer")
 def developer():
+
     return {
+
         "developer": "Het Patel"
+
     }
 
 
 @app.get("/search")
-def search(pair: str, strategy: str):
+def search(
+    pair: str,
+    strategy: str
+):
+
     return {
+
         "pair": pair,
+
         "strategy": strategy
+
     }

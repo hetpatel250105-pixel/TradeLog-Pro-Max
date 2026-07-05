@@ -54,11 +54,13 @@ function Sidebar() {
 
         if (!confirmLogout) return;
 
-        localStorage.removeItem("user_id");
+        // Remove JWT and user information
+        localStorage.removeItem("access_token");
         localStorage.removeItem("username");
         localStorage.removeItem("email");
 
-        navigate("/login");
+        // Go back to login page
+        window.location.href = "/";
 
     }
 
@@ -109,9 +111,7 @@ function Sidebar() {
                                 className={({ isActive }) =>
 
                                     isActive
-
                                         ? "sidebar-link active"
-
                                         : "sidebar-link"
 
                                 }

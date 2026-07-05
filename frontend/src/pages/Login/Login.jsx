@@ -23,8 +23,11 @@ function Login() {
         setError("");
 
         if (!email || !password) {
+
             setError("Please fill in all fields.");
+
             return;
+
         }
 
         try {
@@ -32,39 +35,70 @@ function Login() {
             setLoading(true);
 
             const response = await loginUser({
+
                 email,
                 password
+
             });
 
-            console.log("LOGIN RESPONSE:", response.data);
+            console.log(response.data);
 
-            if (!response.data.user_id) {
+            if (!response.data.access_token) {
+
                 setError("Login failed.");
+
                 return;
+
             }
 
-            // Save logged-in user
-            localStorage.setItem("user_id", String(response.data.user_id));
-            localStorage.setItem("username", response.data.username);
-            localStorage.setItem("email", response.data.email);
+            // ==========================
+            // Save JWT Token
+            // ==========================
 
-            console.log("Saved user_id:", localStorage.getItem("user_id"));
+            localStorage.setItem(
 
-            // Force reload so TradeContext loads the correct user's trades
+                "access_token",
+
+                response.data.access_token
+
+            );
+
+            // ==========================
+            // Save User Info
+            // ==========================
+
+            localStorage.setItem(
+
+                "username",
+
+                response.data.username
+
+            );
+
+            localStorage.setItem(
+
+                "email",
+
+                response.data.email
+
+            );
+
+            // ==========================
+            // Redirect
+            // ==========================
+
             window.location.href = "/dashboard";
 
         }
+
         catch (error) {
 
             console.error(error);
 
-            if (error.response) {
-                console.log(error.response.data);
-            }
-
             setError("Invalid email or password.");
 
         }
+
         finally {
 
             setLoading(false);
@@ -81,19 +115,32 @@ function Login() {
 
                 <div className="brand">
 
-                    <h1>TradeLog Pro Max</h1>
+                    <h1>
+
+                        TradeLog Pro Max
+
+                    </h1>
 
                     <p>
+
                         Master Your Trading Journey.
-                        Track every trade, analyze every mistake,
-                        and become a consistently profitable trader.
+                        Track every trade,
+                        analyze every mistake,
+                        and become a consistently
+                        profitable trader.
+
                     </p>
 
                     <ul className="feature-list">
+
                         <li>📈 Advanced Trade Analytics</li>
+
                         <li>🎯 Risk Reward Tracking</li>
+
                         <li>📊 Performance Dashboard</li>
+
                         <li>🏆 Professional Trading Journal</li>
+
                     </ul>
 
                 </div>
@@ -104,10 +151,16 @@ function Login() {
 
                 <Card className="login-card">
 
-                    <h2>Welcome Back</h2>
+                    <h2>
+
+                        Welcome Back
+
+                    </h2>
 
                     <p className="login-subtitle">
+
                         Login to continue your trading journey.
+
                     </p>
 
                     <form onSubmit={handleLogin}>
@@ -116,24 +169,40 @@ function Login() {
                             type="email"
                             placeholder="Enter your Email"
                             value={email}
-                            onChange={(event) => setEmail(event.target.value)}
+                            onChange={(event) =>
+                                setEmail(event.target.value)
+                            }
                         />
 
                         <Input
                             type="password"
                             placeholder="Enter your Password"
                             value={password}
-                            onChange={(event) => setPassword(event.target.value)}
+                            onChange={(event) =>
+                                setPassword(event.target.value)
+                            }
                         />
 
-                        {error && (
-                            <p className="error-message">
-                                {error}
-                            </p>
-                        )}
+                        {
+
+                            error && (
+
+                                <p className="error-message">
+
+                                    {error}
+
+                                </p>
+
+                            )
+
+                        }
 
                         <Button
-                            text={loading ? "Logging In..." : "Login"}
+                            text={
+                                loading
+                                    ? "Logging In..."
+                                    : "Login"
+                            }
                             type="submit"
                             disabled={loading}
                         />
@@ -141,10 +210,15 @@ function Login() {
                     </form>
 
                     <p className="register-link">
+
                         Don't have an account?
+
                         <Link to="/register">
+
                             Register
+
                         </Link>
+
                     </p>
 
                 </Card>
