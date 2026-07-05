@@ -12,6 +12,12 @@ function Topbar() {
 
     const [darkMode, setDarkMode] = useState(true);
 
+    // Get username from localStorage
+    const username = localStorage.getItem("username") || "User";
+
+    // First letter in uppercase
+    const firstLetter = username.charAt(0).toUpperCase();
+
     useEffect(() => {
 
         document.documentElement.setAttribute("data-theme", "dark");
@@ -63,11 +69,8 @@ function Topbar() {
                 <div className="topbar-right">
 
                     <button
-
                         className="add-trade-btn"
-
                         onClick={() => setOpenModal(true)}
-
                     >
 
                         + Add Trade
@@ -75,21 +78,14 @@ function Topbar() {
                     </button>
 
                     <button
-
                         className="theme-btn"
-
                         onClick={toggleTheme}
-
                     >
 
                         {
-
                             darkMode
-
                                 ? <FaSun />
-
                                 : <FaMoon />
-
                         }
 
                     </button>
@@ -98,7 +94,7 @@ function Topbar() {
 
                         <div className="user-avatar">
 
-                            H
+                            {firstLetter}
 
                         </div>
 
@@ -106,7 +102,7 @@ function Topbar() {
 
                             <h4>
 
-                                Het Patel
+                                {username}
 
                             </h4>
 
@@ -125,11 +121,8 @@ function Topbar() {
             </header>
 
             <TradeModal
-
                 open={openModal}
-
                 onClose={() => setOpenModal(false)}
-
             />
 
         </>
