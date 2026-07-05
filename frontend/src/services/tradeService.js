@@ -22,11 +22,11 @@ export const createTrade = async (trade) => {
 // Get All Trades
 // ======================
 
-export const getTrades = async () => {
+export const getTrades = async (userId) => {
 
     const response = await api.get(
 
-        "/trades"
+        `/trades/${userId}`
 
     );
 
