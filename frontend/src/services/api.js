@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create a reusable Axios instance
 const api = axios.create({
-    baseURL: "https://tradelog-pro-max.onrender.com",
+    baseURL: "http://127.0.0.1:8000",
     headers: {
         "Content-Type": "application/json",
     },
@@ -27,8 +27,8 @@ export const loginUser = (userData) => {
 // ===============================
 
 // Get All Trades
-export const getTrades = () => {
-    return api.get("/trades");
+export const getTrades = (userId) => {
+    return api.get(`/trades/${userId}`);
 };
 
 // Get Single Trade
@@ -36,11 +36,16 @@ export const getTrade = (tradeId) => {
     return api.get(`/trade/${tradeId}`);
 };
 
-// Create Trade
 export const createTrade = (tradeData) => {
-    return api.post("/trade", tradeData);
-};
 
+    const userId = localStorage.getItem("user_id");
+
+    return api.post("/trade", {
+        ...tradeData,
+        user_id: Number(userId),
+    });
+
+};
 // Update Trade
 export const updateTrade = (tradeId, tradeData) => {
     return api.put(`/trade/${tradeId}`, tradeData);

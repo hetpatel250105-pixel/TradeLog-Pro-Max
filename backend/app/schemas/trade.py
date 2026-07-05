@@ -3,6 +3,8 @@ from datetime import date
 
 
 class TradeSchema(BaseModel):
+    user_id: int
+    
     pair: str
     trade_type: str
     entry: float

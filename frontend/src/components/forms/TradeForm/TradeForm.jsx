@@ -90,6 +90,8 @@ function TradeForm({ editingTrade = null, onClose }) {
 
         try {
 
+            const user_id = Number(localStorage.getItem("user_id"));
+
             const tradeData = {
 
                 pair: trade.pair,
@@ -116,7 +118,9 @@ function TradeForm({ editingTrade = null, onClose }) {
 
                 notes: trade.notes,
 
-                trade_date: trade.trade_date
+                trade_date: trade.trade_date,
+
+                user_id: user_id
 
             };
 

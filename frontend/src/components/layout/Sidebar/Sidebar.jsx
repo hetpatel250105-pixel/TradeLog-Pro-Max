@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "./Sidebar.css";
 
 function Sidebar() {
+
+    const navigate = useNavigate();
 
     const menuItems = [
 
@@ -43,6 +45,22 @@ function Sidebar() {
         }
 
     ];
+
+    function handleLogout() {
+
+        const confirmLogout = window.confirm(
+            "Are you sure you want to logout?"
+        );
+
+        if (!confirmLogout) return;
+
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+
+        navigate("/login");
+
+    }
 
     return (
 
@@ -124,7 +142,10 @@ function Sidebar() {
 
             <div className="sidebar-bottom">
 
-                <button className="logout-btn">
+                <button
+                    className="logout-btn"
+                    onClick={handleLogout}
+                >
 
                     🚪 Logout
 

@@ -16,13 +16,28 @@ export function TradeProvider({ children }) {
 
         try {
 
-            const data = await getTrades();
+            const userId = localStorage.getItem("user_id");
 
-            setTrades(data);
+            console.log("User ID:", userId);
+
+            if (!userId) {
+                console.log("No user logged in.");
+                setTrades([]);
+                return;
+            }
+
+            const response = await getTrades(userId);
+
+            console.log("API Response:", response);
+            console.log("Is Array:", Array.isArray(response));
+
+            setTrades(response);
+
+            console.log("After setTrades:", response);
 
         } catch (error) {
 
-            console.error(error);
+            console.error("Load Trades Error:", error);
 
         }
 
@@ -66,74 +81,47 @@ export function TradeProvider({ children }) {
 
     }, []);
 
-    // ==========================
     // Dashboard Statistics
-    // ==========================
 
     const totalTrades = trades.length;
 
     const totalProfit = trades.reduce(
-
         (sum, trade) => sum + Number(trade.profit),
-
         0
-
     );
 
     const winningTrades = trades.filter(
-
         (trade) => trade.result === "Win"
-
     ).length;
 
     const winRate =
-
         totalTrades === 0
-
             ? 0
-
             : ((winningTrades / totalTrades) * 100).toFixed(1);
 
     const averageRR =
-
         totalTrades === 0
-
             ? 0
-
             : (
-
                 trades.reduce(
-
-                    (sum, trade) =>
-
-                        sum + Number(trade.risk_reward),
-
+                    (sum, trade) => sum + Number(trade.risk_reward),
                     0
-
                 ) / totalTrades
-
             ).toFixed(2);
 
     return (
 
         <TradeContext.Provider
-
             value={{
-
                 trades,
-
                 loadTrades,
-
                 removeTrade,
                 editTrade,
-
                 totalTrades,
                 totalProfit,
                 winRate,
                 averageRR
-
             }}
-
         >
 
             {children}

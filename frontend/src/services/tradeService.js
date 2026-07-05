@@ -2,6 +2,9 @@ import axios from "axios";
 
 const API_URL = "http://127.0.0.1:8000";
 
+// ======================
+// Create Trade
+// ======================
 export const createTrade = async (trade) => {
 
     const response = await axios.post(
@@ -13,16 +16,22 @@ export const createTrade = async (trade) => {
 
 };
 
-export const getTrades = async () => {
+// ======================
+// Get All Trades
+// ======================
+export const getTrades = async (userId) => {
 
     const response = await axios.get(
-        `${API_URL}/trades`
+        `${API_URL}/trades/${userId}`
     );
 
     return response.data;
 
 };
 
+// ======================
+// Get Single Trade
+// ======================
 export const getTrade = async (id) => {
 
     const response = await axios.get(
@@ -33,6 +42,9 @@ export const getTrade = async (id) => {
 
 };
 
+// ======================
+// Update Trade
+// ======================
 export const updateTrade = async (id, trade) => {
 
     const response = await axios.put(
@@ -44,6 +56,9 @@ export const updateTrade = async (id, trade) => {
 
 };
 
+// ======================
+// Delete Trade
+// ======================
 export const deleteTrade = async (id) => {
 
     const response = await axios.delete(

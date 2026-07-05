@@ -69,7 +69,7 @@ def search(pair : str, strategy : str):
 def create_trade(trade: TradeSchema, db: Session = Depends(get_db)):
 
     new_trade = Trade(
-
+        user_id=trade.user_id,
         pair=trade.pair,
         trade_type=trade.trade_type,
         entry=trade.entry,
@@ -94,11 +94,13 @@ def create_trade(trade: TradeSchema, db: Session = Depends(get_db)):
         "trade": new_trade
     }
     
-@app.get("/trades")
-def get_trades(db : Session = Depends(get_db)):
-    
-    trades = db.query(Trade).all()
-    
+@app.get("/trades/{user_id}")
+def get_trades(user_id: int, db: Session = Depends(get_db)):
+
+    trades = db.query(Trade).filter(
+        Trade.user_id == user_id
+    ).all()
+
     return trades
 
 @app.get("/trade/{trade_id}")
@@ -180,19 +182,23 @@ def register(user : UserSchema, db : Session = Depends(get_db)):
     }
     
 @app.post("/login")
-def login(user : LoginSchema, db : Session = Depends(get_db)):
-    
+def login(user: LoginSchema, db: Session = Depends(get_db)):
+
     db_user = db.query(User).filter(User.email == user.email).first()
-    
+
     if db_user is None:
         return {
-            "message" : "INVALID email"
+            "message": "INVALID email"
         }
+
     if not verify_password(user.password, db_user.password):
         return {
-            "message" : "INVALID password"
+            "message": "INVALID password"
         }
 
     return {
-        "message" : "login successful"
+        "message": "login successful",
+        "user_id": db_user.id,
+        "username": db_user.username,
+        "email": db_user.email
     }

@@ -4,7 +4,6 @@ import Layout from "../../components/layout/Layout/Layout";
 import StatCard from "../../components/ui/StatCard/StatCard";
 import TradeTable from "../../components/tables/TradeTable/TradeTable";
 import TradeModal from "../../components/modals/TradeModal/TradeModal";
-
 import ChartViewer from "../../components/analytics/ChartViewer/ChartViewer";
 
 import { useTrades } from "../../context/TradeContext";
@@ -25,6 +24,8 @@ function Dashboard() {
         averageRR
 
     } = useTrades();
+
+    console.log("Dashboard trades:", trades);
 
     const {
 
@@ -89,13 +90,9 @@ function Dashboard() {
             </div>
 
             <TradeModal
-
                 open={open}
-
                 editingTrade={editingTrade}
-
                 onClose={closeModal}
-
             />
 
         </Layout>

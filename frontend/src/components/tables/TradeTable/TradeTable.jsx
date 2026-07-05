@@ -1,40 +1,24 @@
 import "./TradeTable.css";
 
-import { useTrades } from "../../../context/TradeContext";
 import { useModal } from "../../../context/ModalContext";
+import { useTrades } from "../../../context/TradeContext";
 
-function TradeTable() {
+function TradeTable({ trades }) {
 
-    const {
+    const { removeTrade } = useTrades();
+    const { openEditTrade } = useModal();
 
-        trades,
-
-        removeTrade
-
-    } = useTrades();
-
-    const {
-
-        openEditTrade
-
-    } = useModal();
+    console.log("TradeTable trades:", trades);
 
     async function handleDelete(id) {
 
         const confirmDelete = window.confirm(
-
             "Are you sure you want to delete this trade?"
-
         );
 
-        if (!confirmDelete) {
-
-            return;
-
-        }
+        if (!confirmDelete) return;
 
         await removeTrade(id);
-
     }
 
     return (
@@ -42,21 +26,13 @@ function TradeTable() {
         <div className="trade-table-container">
 
             <div className="trade-table-header">
-
-                <h2>
-
-                    📋 Recent Trades
-
-                </h2>
-
+                <h2>📋 Recent Trades</h2>
             </div>
 
             <table className="trade-table">
 
                 <thead>
-
                     <tr>
-
                         <th>Pair</th>
                         <th>Type</th>
                         <th>Entry</th>
@@ -70,180 +46,74 @@ function TradeTable() {
                         <th>Strategy</th>
                         <th>Date</th>
                         <th>Actions</th>
-
                     </tr>
-
                 </thead>
 
                 <tbody>
 
-                    {
+                    {trades.length === 0 ? (
 
-                        trades.length === 0 ?
+                        <tr>
+                            <td colSpan="13" className="empty-state">
+                                No trades found.
+                            </td>
+                        </tr>
 
-                            (
+                    ) : (
 
-                                <tr>
+                        trades.map((trade) => (
 
-                                    <td
+                            <tr key={trade.id}>
 
-                                        colSpan="13"
+                                <td>{trade.pair}</td>
+                                <td>{trade.trade_type}</td>
+                                <td>{trade.entry}</td>
+                                <td>{trade.exit}</td>
+                                <td>{trade.stop_loss}</td>
+                                <td>{trade.take_profit}</td>
+                                <td>{trade.lot_size}</td>
+                                <td>1 : {trade.risk_reward}</td>
 
-                                        className="empty-state"
+                                <td className={Number(trade.profit) >= 0 ? "profit-positive" : "profit-negative"}>
+                                    ${Number(trade.profit).toFixed(2)}
+                                </td>
 
-                                    >
+                                <td>
+                                    <span className={`result ${trade.result.toLowerCase()}`}>
+                                        {trade.result}
+                                    </span>
+                                </td>
 
-                                        No trades found.
+                                <td>{trade.strategy}</td>
+                                <td>{trade.trade_date}</td>
 
-                                    </td>
+                                <td>
 
-                                </tr>
+                                    <div className="trade-action">
 
-                            )
-
-                            :
-
-                            (
-
-                                trades.map((trade) => (
-
-                                    <tr
-
-                                        key={trade.id}
-
-                                    >
-
-                                        <td>
-
-                                            {trade.pair}
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.trade_type}
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.entry}
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.exit}
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.stop_loss}
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.take_profit}
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.lot_size}
-
-                                        </td>
-
-                                        <td>
-
-                                            1 : {trade.risk_reward}
-
-                                        </td>
-
-                                        <td
-
-                                            className={
-
-                                                Number(trade.profit) >= 0
-
-                                                    ? "profit-positive"
-
-                                                    : "profit-negative"
-
-                                            }
-
+                                        <button
+                                            className="edit-btn"
+                                            onClick={() => openEditTrade(trade)}
                                         >
+                                            ✏️
+                                        </button>
 
-                                            ${Number(trade.profit).toFixed(2)}
+                                        <button
+                                            className="delete-btn"
+                                            onClick={() => handleDelete(trade.id)}
+                                        >
+                                            🗑
+                                        </button>
 
-                                        </td>
+                                    </div>
 
-                                        <td>
+                                </td>
 
-                                            <span
+                            </tr>
 
-                                                className={`result ${trade.result.toLowerCase()}`}
+                        ))
 
-                                            >
-
-                                                {trade.result}
-
-                                            </span>
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.strategy}
-
-                                        </td>
-
-                                        <td>
-
-                                            {trade.trade_date}
-
-                                        </td>
-
-                                        <td>
-
-                                            <div className="trade-action">
-
-                                                <button
-
-                                                    className="edit-btn"
-
-                                                    onClick={() => openEditTrade(trade)}
-
-                                                >
-
-                                                    ✏️
-
-                                                </button>
-
-                                                <button
-
-                                                    className="delete-btn"
-
-                                                    onClick={() => handleDelete(trade.id)}
-
-                                                >
-
-                                                    🗑
-
-                                                </button>
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr>
-
-                                ))
-
-                            )
-
-                    }
+                    )}
 
                 </tbody>
 
